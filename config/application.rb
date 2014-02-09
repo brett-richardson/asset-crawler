@@ -2,8 +2,10 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-require 'dotenv'
-Dotenv.load
+if ENV['DYNO'].nil?
+  require 'dotenv'
+  Dotenv.load
+end
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
