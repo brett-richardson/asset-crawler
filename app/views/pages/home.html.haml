@@ -1,0 +1,14 @@
+.container
+  .row
+    .col-sm-6.col-sm-offset-3
+      .hero-unit
+        %h1 Asset Crawler
+
+        %form.form
+          .form-group
+            %label{ for: 'domain_url' } Enter a domain to crawl below...
+
+            %input.form-control{ name: 'domain[url]', id: 'domain_url',
+              placeholder: 'http://www.example.com' }
+
+          %input.btn.btn-xlg.btn-warning{ type: 'submit', value: 'Crawl!' }

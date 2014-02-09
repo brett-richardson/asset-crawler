@@ -1,0 +1,19 @@
+defaults: &defaults
+  adapter: postgresql
+  encoding: unicode
+  user: postgres
+  pool: 5
+  timeout: 5000
+
+development:
+  database: asset_crawler_development
+  <<: *defaults
+
+test:
+  database: asset_crawler_test
+  <<: *defaults
+
+production:
+  database: asset_crawler_production
+  <<: *defaults
+
