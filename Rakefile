@@ -3,6 +3,6 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-ExpertSearch::Application.load_tasks
+AssetCrawler::Application.load_tasks
 
 task :default => [ :spec, :teaspoon ]

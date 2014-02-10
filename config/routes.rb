@@ -1,4 +1,4 @@
-ExpertSearch::Application.routes.draw do
+AssetCrawler::Application.routes.draw do
 
   require 'sidekiq/web'
   mount Sidekiq::Web => '/processing'
