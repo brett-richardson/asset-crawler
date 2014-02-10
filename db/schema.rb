@@ -11,10 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140210015004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "asset_links", force: true do |t|
+    t.integer "domain_id"
+    t.integer "source_id"
+    t.integer "asset_id"
+  end
+
+  create_table "assets", force: true do |t|
+    t.string  "type"
+    t.string  "state"
+    t.string  "path"
+    t.integer "domain_id"
+  end
+
+  create_table "domains", force: true do |t|
+    t.string   "url"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "links", force: true do |t|
+    t.integer "domain_id"
+    t.integer "source_id"
+    t.integer "target_id"
+    t.string  "path"
+    t.string  "text"
+  end
+
+  create_table "pages", force: true do |t|
+    t.integer  "domain_id"
+    t.string   "path"
+    t.string   "state"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pages", ["domain_id", "path"], name: "index_pages_on_domain_id_and_path", unique: true, using: :btree
 
 end

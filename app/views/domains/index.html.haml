@@ -1,0 +1,13 @@
+.container
+  %table.table.table-striped
+    %thead
+      %th Url
+      %th State
+      %th Actions
+    %tbody
+      - collection.each do |domain|
+        %tr
+          %td= domain.url
+          %td= domain.state
+          %td= link_to 'View', domain_path( domain ),
+            class: 'btn btn-default'

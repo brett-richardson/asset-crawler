@@ -1,0 +1,10 @@
+.container
+  = simple_form_for resource, class: 'form' do |f|
+    = render 'shared/form_errors', object: f.object
+    %p.lead Enter a domain and start crawling!
+
+    .form-group
+      = f.input :url, input_html: { class: 'form-control',
+        placeholder: 'http://www.example.com' }
+
+    = f.submit 'Crawl!', class: 'btn btn-lg btn-warning'

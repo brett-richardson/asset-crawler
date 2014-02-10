@@ -1,0 +1,30 @@
+.container
+  %h1
+    = resource.title
+    %small Page
+
+  %p.lead
+    .muted
+      %strong Current state:
+    = resource.state.humanize
+
+
+  %h3 Pages
+
+  %ul
+    - resource.pages.uniq{ |p| p.path }.each do |page|
+      %li
+        %h5= link_to page.title, page_path( page )
+        %p.muted
+          %strong Crawl Status
+          = page.state
+
+
+  %h3 Links
+
+  %ul
+    - resource.links.each do |link|
+      %li
+        = link.text
+        &nbsp;&raquo;&nbsp;
+        = link.path

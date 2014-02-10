@@ -4,11 +4,11 @@
       .hero-unit
         %h1 Asset Crawler
 
-        %form.form
-          .form-group
-            %label{ for: 'domain_url' } Enter a domain to crawl below...
+        = simple_form_for @domain, class: 'form' do |f|
+          %p.lead Enter a domain and start crawling!
 
-            %input.form-control{ name: 'domain[url]', id: 'domain_url',
+          .form-group
+            = f.input :url, input_html: { class: 'form-control',
               placeholder: 'http://www.example.com' }
 
-          %input.btn.btn-xlg.btn-warning{ type: 'submit', value: 'Crawl!' }
+          = f.submit 'Crawl!', class: 'btn btn-lg btn-warning'

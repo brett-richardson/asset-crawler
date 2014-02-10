@@ -2,7 +2,7 @@ guard :bundler do
   watch 'Gemfile'
 end
 
-guard :rspec do
+guard :rspec, all_on_start: true, all_on_pass: true do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
@@ -20,16 +20,16 @@ guard :rspec do
 end
 
 
-guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
-  watch('config/application.rb')
-  watch('config/environment.rb')
-  watch('config/environments/test.rb')
-  watch(%r{^config/initializers/.+\.rb$})
-  watch('Gemfile.lock')
-  watch('spec/spec_helper.rb') { :rspec }
-  watch('test/test_helper.rb') { :test_unit }
-  watch(%r{features/support/}) { :cucumber }
-end
+# guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
+#   watch('config/application.rb')
+#   watch('config/environment.rb')
+#   watch('config/environments/test.rb')
+#   watch(%r{^config/initializers/.+\.rb$})
+#   watch('Gemfile.lock')
+#   watch('spec/spec_helper.rb') { :rspec }
+#   watch('test/test_helper.rb') { :test_unit }
+#   watch(%r{features/support/}) { :cucumber }
+# end
 
 guard :teaspoon do
   watch(%r{app/assets/javascripts/(.+).js}) { |m| "#{m[1]}_spec" } # Implementation files

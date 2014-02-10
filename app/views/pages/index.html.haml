@@ -1,0 +1,15 @@
+.container
+  %table.table.table-striped
+    %thead
+      %th Title
+      %th Path
+      %th State
+      %th Actions
+    %tbody
+      - collection.uniq{ |p| p.path }.each do |page|
+        %tr
+          %td= page.title
+          %td= page.path
+          %td= page.state
+          %td= link_to 'View', page,
+            class: 'btn btn-default'
